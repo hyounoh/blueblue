@@ -1,0 +1,4 @@
+{
+  "db_type": "type of database",
+  "db_host": "localhost:9200"
+}
