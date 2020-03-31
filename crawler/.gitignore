@@ -1,5 +1,6 @@
 venv/
 config/config.json
+chromedriver.exe
 
 # Created by https://www.gitignore.io/api/python,pycharm,windows
 # Edit at https://www.gitignore.io/?templates=python,pycharm,windows
