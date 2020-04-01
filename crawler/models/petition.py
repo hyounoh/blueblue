@@ -41,37 +41,37 @@ class PetitionMeta:
         return self.__title
 
 
-class PetitionContent:
+class PetitionBody:
 
-    def __init__(self, petition_id, text):
-        self.__petition_id = petition_id
-        self.__text = text
+    def __init__(self, petition_meta_id, body):
+        self.__petition_meta_id = petition_meta_id
+        self.__body = body
 
     def __del__(self):
         pass
 
     @property
-    def petition_id(self):
-        return self.__petition_id
+    def petition_meta_id(self):
+        return self.__petition_meta_id
 
     @property
-    def text(self):
-        return self.__text
+    def body(self):
+        return self.__body
 
 
 class Word:
 
-    def __init__(self, text, morpheme, petition_id, position):
+    def __init__(self, text, morpheme, petition_meta_id, position):
         self.__text = text
         self.__morpheme = morpheme
-        self.__petition_id = petition_id
+        self.__petition_meta_id = petition_meta_id
         self.__position = position
 
     def __del__(self):
         pass
 
     def __str__(self):
-        return self.__text, self.__morpheme, self.__petition_id, self.__position
+        return self.__text, self.__morpheme, self.__petition_meta_id, self.__position
 
     @property
     def text(self):
@@ -82,8 +82,8 @@ class Word:
         return self.__morpheme
 
     @property
-    def petition_id(self):
-        return self.__petition_id
+    def petition_meta_id(self):
+        return self.__petition_meta_id
 
     @property
     def position(self):

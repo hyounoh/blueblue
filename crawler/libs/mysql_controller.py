@@ -1,8 +1,6 @@
 import pymysql
 import json
 
-from models import *
-
 
 class MySQLController:
 
@@ -49,23 +47,23 @@ class MySQLController:
         rows = self.curs.fetchall()
         print(rows)
 
-    def insert_petition_content(self, petition_content):
-        sql = "INSERT INTO petition_content (id, text) VALUES (%s, %s)"
-        self.curs.execute(sql, (petition_content.petition_id, petition_content.text))
+    def insert_petition_body(self, petition_body):
+        sql = "INSERT INTO petition_body (id, body) VALUES (%s, %s)"
+        self.curs.execute(sql, (petition_body.petition_meta_id, petition_body.body))
 
         self.conn.commit()
 
         return self.curs.lastrowid
 
-    def select_all_petition_content(self):
-        sql = "SELECT * FROM petition_content"
+    def select_all_petition_body(self):
+        sql = "SELECT * FROM petition_body"
         self.curs.execute(sql)
 
         rows = self.curs.fetchall()
         print(rows)
 
     def insert_word(self, words):
-        sql = "INSERT INTO word (text, morpheme, petition, position) VALUES (%s, %s, %s, %s)"
+        sql = "INSERT INTO word (text, morpheme, petition_meta_id, position) VALUES (%s, %s, %s, %s)"
         self.curs.executemany(sql, words)
 
         self.conn.commit()
@@ -76,3 +74,11 @@ class MySQLController:
 
         rows = self.curs.fetchall()
         print(rows)
+
+    def select_last_petition_id(self):
+        sql = "SELECT no FROM petition_meta ORDER BY datetime DESC"
+        self.curs.execute(sql)
+
+        row = self.curs.fetchone()
+
+        return row and row[0] or None
