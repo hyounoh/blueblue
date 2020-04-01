@@ -1,12 +1,12 @@
-import requests
-import json
 import time
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from time import sleep
 
-from src.tagger import Tagger
+from libs.tagger import Tagger
+from libs.mysql_controller import MySQLController
+from models.petition import *
 
 # tagger setting
 tagger = Tagger()
@@ -19,6 +19,9 @@ options.add_argument('disable-gpu')
 options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 driver = webdriver.Chrome('./chromedriver', chrome_options=options)
 driver.implicitly_wait(5)
+
+# dbms setting
+db = MySQLController()
 
 
 def crawling():
@@ -64,7 +67,7 @@ def crawling():
             print(title_pos)
 
             date_expired = petition.find(class_='bl_date light').text.replace('청원 종료일 ', '')
-            n_participant = int(petition.find(class_='bl_agree cs').text.replace('참여인원 ', '').replace('명', '').replace(',',''))
+            n_participants = int(petition.find(class_='bl_agree cs').text.replace('참여인원 ', '').replace('명', '').replace(',',''))
 
             # for detail
             detail_url = 'https://www1.president.go.kr' + petition.find('a')['href']
@@ -79,30 +82,33 @@ def crawling():
 
             # content text analyzing
             content = soup.find('div', class_='View_write').text.replace('\t', '').replace('\n', '')
-            text_pos = tagger.pos(content)
-            print(text_pos)
-
-            # make json data
-            curr_petition_json = {
-                'no': no,
-                'category': category,
-                'n_participant': n_participant,
-                'date_expired': date_expired,
-                'date_start': date_start,
-                'detail_url': detail_url,
-                'title': {
-                    'raw': title,
-                    # 'nouns': title_pos
-                },
-                'content': {
-                    'raw': content,
-                    # 'nouns': text_pos
-                }
-            }
-
-            print(str(curr_petition_json))
+            content_pos = tagger.pos(content)
+            print(content_pos)
 
             # TODO: store in db
+            petition_meta = PetitionMeta(no=no, category=category, n_participants=n_participants,
+                                         date_expired=date_expired, date_start=date_start,
+                                         detail_url=detail_url, title=title)
+            petition_meta_id = db.insert_petition_meta(petition_meta)
+            print('petition_meta_id: ', petition_meta_id, 'is inserted')
+
+            petition_content = PetitionContent(petition_id=petition_meta_id, text=content)
+            petition_content_id = db.insert_petition_content(petition_content)
+            print('petition_content_id: ', petition_content_id, 'is inserted')
+
+            words = []
+            nn_pos = ['NNG', 'NNP', 'NNB', 'NNM', 'NP']
+            for pos in title_pos:
+                if pos[1] in nn_pos:
+                    word = Word(text=pos[0], morpheme=pos[1], petition_id=petition_meta_id, position='title')
+                    words.append(word.__str__())
+
+            for pos in content_pos:
+                if pos[1] in nn_pos:
+                    word = Word(text=pos[0], morpheme=pos[1], petition_id=petition_meta_id, position='content')
+                    # words.append(word.__str__())
+
+            db.insert_word(words=words)
 
             time.sleep(0.5)
 
