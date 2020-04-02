@@ -1,4 +1,5 @@
 import time
+import re
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -10,11 +11,12 @@ from models.petition import *
 
 
 def crawling():
-    # Set dbms
-    db = MySQLController()
 
     # Set tagger module
     tagger = Tagger()
+
+    # Set dbms
+    db = MySQLController()
 
     # Set chrome driver
     driver = set_chrome_driver()
@@ -64,7 +66,7 @@ def crawling():
             print('\t' + no + ' petition: ' + detail_url)
 
             # Extract and analyze title text
-            title = petition.find(class_='bl_subject').text.replace('제목 ', '')
+            title = filter_text(petition.find(class_='bl_subject').text.replace('제목 ', ''))
             title_pos = tagger.pos(title)
             # print(title_pos)
 
@@ -82,7 +84,7 @@ def crawling():
             date_expired = petition.find(class_='bl_date light').text.replace('청원 종료일 ', '')
 
             # Extract and analyze body text
-            body = soup_detail.find('div', class_='View_write').text.replace('\t', '').replace('\n', '')
+            body = filter_text(soup_detail.find('div', class_='View_write').text.replace('\t', '').replace('\n', ' '))
             body_pos = tagger.pos(body)
             # print(body_pos)
 
@@ -137,3 +139,7 @@ def parse_page(driver, url):
     sleep(2)
     html = driver.page_source
     return BeautifulSoup(html, 'html.parser')
+
+
+def filter_text(text):
+    return re.sub('[^0-9a-zA-Zㄱ-힗 .]', '', text)
