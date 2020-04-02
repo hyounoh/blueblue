@@ -27,8 +27,8 @@ def crawling():
     page_num = 1
     url_tail = '&order=0'
 
-    is_first_iter = True
-    while True:
+    up_to_date = False
+    while not up_to_date:
 
         # Generate url of i-th page by using page number
         list_url = url_head + str(page_num) + url_tail
@@ -42,14 +42,8 @@ def crawling():
         if soup.select('a.on').__len__() == 1:
             break
 
-        # If last crawled petition document id is greater than or equal recent's then quit crawling
-        recent_petition_no = list(soup.find('ul', {'class': 'petition_list'}))[0].find('a')['href'].split('/')[2]
+        # id of last crawled document
         last_crawled_no = db.select_last_petition_id()
-        if is_first_iter:
-            is_first_iter = False
-            if last_crawled_no and int(recent_petition_no) <= last_crawled_no:
-                print('Crawling is up-to-date')
-                break
 
         # Handle each document
         petition_list = soup.find('ul', {'class': 'petition_list'})
@@ -64,6 +58,12 @@ def crawling():
             # If current value is less than or equal to last value then quit crawling
             no = detail_url_tail.split('/')[2]
             print('\t' + no + ' petition: ' + detail_url)
+
+            # If last crawled petition document id is greater than or equal recent's then quit crawling
+            if int(no) <= last_crawled_no:
+                up_to_date = True
+                print('Up-to-date crawling')
+                break
 
             # Extract and analyze title text
             title = filter_text(petition.find(class_='bl_subject').text.replace('제목 ', ''))
