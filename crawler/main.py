@@ -1,4 +1,12 @@
+import time
+import schedule
+
 from src.crawler import crawling
 
+
 if __name__ == "__main__":
-    crawling()
+    schedule.every().day.at("12:00").do(crawling)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
