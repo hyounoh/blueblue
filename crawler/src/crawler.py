@@ -27,6 +27,9 @@ def crawling():
     page_num = 1
     url_tail = '&order=0'
 
+    # id of last crawled document
+    last_crawled_no = db.select_last_petition_id()
+
     up_to_date = False
     while not up_to_date:
 
@@ -41,9 +44,6 @@ def crawling():
         # So, have to quit crawling
         if soup.select('a.on').__len__() == 1:
             break
-
-        # id of last crawled document
-        last_crawled_no = db.select_last_petition_id()
 
         # Handle each document
         petition_list = soup.find('ul', {'class': 'petition_list'})
