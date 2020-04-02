@@ -8,5 +8,6 @@ if __name__ == "__main__":
     schedule.every().day.at("12:00").do(crawling)
 
     while True:
+        print("Check crawling schedule...")
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(10)
