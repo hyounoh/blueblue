@@ -76,7 +76,7 @@ class MySQLController:
         print(rows)
 
     def select_last_petition_id(self):
-        sql = "SELECT no FROM petition_meta ORDER BY datetime DESC"
+        sql = "SELECT no FROM petition_meta ORDER BY no DESC"
         self.curs.execute(sql)
 
         row = self.curs.fetchone()
