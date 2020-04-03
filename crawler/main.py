@@ -15,6 +15,7 @@ if __name__ == "__main__":
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
+    # Set schedule
     schedule.every().day.at("12:00").do(crawling)
 
     while True:
