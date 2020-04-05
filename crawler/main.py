@@ -21,4 +21,4 @@ if __name__ == "__main__":
     while True:
         logger.info("Check crawling schedule...")
         schedule.run_pending()
-        time.sleep(60)
+        time.sleep(600)
