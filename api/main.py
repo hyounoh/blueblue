@@ -17,4 +17,4 @@ api = Api(app, title='API Template', api_version='0.0.1', api_spec_url='/swagger
 api.add_resource(WordCloud, '/wordcloud')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=5001, threaded=True, debug=True)
