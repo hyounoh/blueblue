@@ -1,5 +1,8 @@
 from flask import make_response
+from libs.mysql_controller import MySQLController
 import json
+
+mysql_controller = MySQLController()
 
 
 def output_json(data, code):
