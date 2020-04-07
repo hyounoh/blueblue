@@ -1,13 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Title from './components/Title';
+import Wordcloud from './components/Wordcloud';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <div className="Title">
+        <Title></Title>
+      </div>
+      <div className="Content">
+        <Wordcloud></Wordcloud>
+      </div>
     </div>
   );
 }
