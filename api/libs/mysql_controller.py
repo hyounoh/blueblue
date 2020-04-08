@@ -47,3 +47,16 @@ class MySQLController:
         rows = self.curs.fetchall()
 
         return rows
+
+    def petition_graph(self, recent=True):
+
+        sql = "SELECT DATE_FORMAT(pm.date_start, '%Y-%m-%d') as date, COUNT(*) as count FROM petition_meta pm"
+        sql += " WHERE pm.date_start > DATE(NOW()) - INTERVAL 7 DAY" if recent else ""
+        sql += " GROUP BY pm.date_start ORDER BY pm.date_start DESC"
+        sql += ";" if recent else " LIMIT 30;"
+
+        self.curs.execute(sql)
+
+        rows = self.curs.fetchall()
+
+        return rows

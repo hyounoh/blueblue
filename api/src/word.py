@@ -1,21 +1,27 @@
 from src import *
-from collections import defaultdict
 
 from flask_restful import Resource, reqparse
 from flask_restful_swagger_2 import swagger
 
 
-class Graph(Resource):
+class WordCloud(Resource):
     @swagger.doc({
-        "description": "get the number of petition by time-domain",
+        "description": "get word cloud data from petition",
         "tags": ["Petition"],
         "parameters": [
             {
-                "name": "recent",
+                "name": "use_stopword",
                 "type": "integer",
                 "in": "query",
                 "required": True,
-                "description": "0 or 1, if true get the number of petition of last week (default: 1 True)"
+                "description": "0 or 1, decide to use stopword or not (default: 1 True)"
+            },
+            {
+                "name": "limit",
+                "type": "integer",
+                "in": "query",
+                "required": True,
+                "description": "the number of word (default: 10)"
             }
         ],
         "responses": {
@@ -26,8 +32,8 @@ class Graph(Resource):
                         "message": "success",
                         "results": [
                             {
-                                "date": "date (ex. 2020-04-01)",
-                                "count": "petition count"
+                                "word": "word text",
+                                "count": "word count"
                             }
                         ]
                     }
@@ -44,20 +50,19 @@ class Graph(Resource):
         }
     })
     def get(self):
-
         # Check args
         parser = reqparse.RequestParser()
-        parser.add_argument('recent', type=int)
+        parser.add_argument('use_stopword', type=int)
+        parser.add_argument('limit', type=int)
 
         # Handle requested args
         args = parser.parse_args()
-        recent = args.get('recent')
+        use_stopword = args.get('use_stopword')
+        limit = args.get('limit')
 
-        # Compose petition-graph data
-        petition_graph = mysql_controller.petition_graph(recent=recent)
-        results = defaultdict(list)
-        results['sum'] = sum(petition[1] for petition in petition_graph)
-        results['graph'] = [{"date": petition[0], "count": petition[1]} for petition in petition_graph]
+        # Compose wordcloud data
+        words = mysql_controller.wordcloud(use_stopword=use_stopword, limit=limit)
+        results = [{"word": word[0], "count": word[1]} for word in words]
 
         # response
         return output_json({
