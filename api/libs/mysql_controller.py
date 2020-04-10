@@ -60,3 +60,17 @@ class MySQLController:
         rows = self.curs.fetchall()
 
         return rows
+
+    def petition_word(self, keyword):
+
+        sql = "SELECT DISTINCT w.`text`, pm.title, pm.detail_url, pm.date_start, pm.no "
+        sql += "FROM word w, petition_meta pm "
+        sql += "WHERE w.`text` = \"" + keyword + "\" AND w.petition_meta_id = pm.id "
+        sql += "ORDER BY pm.date_start DESC, pm.no DESC "
+        sql += "LIMIT 25;"
+
+        self.curs.execute(sql)
+
+        rows = self.curs.fetchall()
+
+        return rows
