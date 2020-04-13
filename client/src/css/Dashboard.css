@@ -1,0 +1,23 @@
+.Dashboard {
+    margin-top: 20px;
+    width: 90vw;
+    height: 200px;
+    background-color: magenta;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Keyword {
+    margin: 20px;
+    width: 30vw;
+    height: 180px;
+    background-color: mediumblue;
+}
+
+.Count {
+    margin: 20px;
+    width: 30vw;
+    height: 180px;
+    background-color: mediumblue;
+}

@@ -1,7 +1,10 @@
 import React from 'react';
 import './App.css';
 import Title from './components/Title';
+import Dashboard from './components/Dashboard';
 import Wordcloud from './components/Wordcloud';
+import PetitionList from './components/PetitionList';
+import TimeGraph from './components/TimeGraph';
 
 function App() {
 
@@ -10,8 +13,17 @@ function App() {
       <div className="Title">
         <Title></Title>
       </div>
-      <div className="Content">
+      <div>
+        <Dashboard></Dashboard>
+      </div>
+      <div className="Wordcloud">
         <Wordcloud></Wordcloud>
+      </div>
+      <div>
+        <PetitionList></PetitionList>
+      </div>
+      <div>
+        <TimeGraph></TimeGraph>
       </div>
     </div>
   );

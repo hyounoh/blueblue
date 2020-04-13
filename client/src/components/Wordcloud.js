@@ -53,7 +53,7 @@ const Wordcloud = () => {
 
     return (
         <div className="Wordcloud">
-            <IconButton className="" onClick={onRefresh}>
+            <IconButton className="Refresh" onClick={onRefresh}>
                 <RefreshIcon></RefreshIcon>
             </IconButton>
             <ReactWordcloud
