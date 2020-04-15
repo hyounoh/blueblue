@@ -1,15 +1,13 @@
 .Dashboard {
-    margin-top: 64px;
-    width: 70vw;
+    margin-top: 32px;
     height: 200px;
+    width: 70vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .DashboardItem {
-    margin-right: 20px;
-    margin-left: 20px;
     height: 180px;
     display: flex;
     flex: 1;
@@ -17,6 +15,14 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 40px #DDDDDD;
+}
+
+.Word {
+    margin-right: 16px;
+}
+
+.Count {
+    margin-left: 16px;
 }
 
 .DashboardItemTitle {

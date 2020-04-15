@@ -4,7 +4,7 @@ import '../css/Dashboard.css';
 const Dashboard = () => {
     return (
         <div className="Dashboard">
-            <div className="DashboardItem">
+            <div className="DashboardItem Word">
                 <div className="DashboardItemTitle">
                     최근 일주일 핵심 단어
                 </div>
@@ -12,7 +12,7 @@ const Dashboard = () => {
                     코로나, 정부, 국민
                 </div>
             </div>
-            <div className="DashboardItem">
+            <div className="DashboardItem Count">
                 <div className="DashboardItemTitle">
                     최근 일주일 청원 개수
                 </div>
