@@ -26,7 +26,7 @@ class MySQLController:
 
         print('MySQLController del')
 
-    def wordcloud(self, use_stopword=True, limit=10):
+    def wordcloud(self, use_stopword=1, limit=10):
 
         # Compose where clause if using stopword
         where_clause = None
