@@ -1,13 +1,14 @@
 .WordcloudContainer {
     font-size: x-large;
     font-family: 'NanumSquareRoundR';
-    height: 70vh;
+    height: 0 auto;
     width: 70vw;
     margin-top: 32px;
     box-shadow: 0px 0px 40px #EEEEEE;
 }
 
 .Refresh {
-    height: 0 auto;
-    width: 0 auto;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
