@@ -5,10 +5,11 @@
     width: 70vw;
     margin-top: 32px;
     box-shadow: 0px 0px 40px #EEEEEE;
+    position: relative;
 }
 
 .Refresh {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    position: absolute !important;
+    top: 32px;
+    right: 32px;
 }
