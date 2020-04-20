@@ -9,7 +9,14 @@
 }
 
 .Refresh {
-    position: absolute !important;
+    position: absolute;
     top: 32px;
     right: 32px;
+    width: 36px;
+    height: 36px;
+    opacity: 0.5;
+}
+
+.Refresh:hover {
+    opacity: 1;
 }

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/Wordcloud.css'
 import ReactWordcloud from 'react-wordcloud';
 import { select } from 'd3-selection';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import { IconButton } from '@material-ui/core';
+import RefreshIcon from '../icons/round_refresh_black_18dp.png';
 import axios from 'axios'
 
 
@@ -53,9 +52,9 @@ const Wordcloud = () => {
 
     return (
         <div className="WordcloudContainer">
-            <IconButton className="Refresh" onClick={onRefresh}>
-                <RefreshIcon></RefreshIcon>
-            </IconButton>
+            <div className="Refresh" onClick={onRefresh}>
+                <img src={RefreshIcon} alt="Refresh"></img>
+            </div>
             <ReactWordcloud
                 words={words}
                 options={{
