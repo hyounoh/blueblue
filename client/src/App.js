@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Wordcloud from './components/Wordcloud';
 import PetitionList from './components/PetitionList';
 import TimeGraph from './components/TimeGraph';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -24,6 +25,9 @@ function App() {
       </div>
       <div>
         <TimeGraph></TimeGraph>
+      </div>
+      <div className="FooterArea">
+        <Footer></Footer>
       </div>
     </div>
   );

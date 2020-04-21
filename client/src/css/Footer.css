@@ -1,0 +1,42 @@
+.FooterContainer {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Link {
+    font-size: x-large;
+    font-family: 'NanumSquareRoundB';
+    width: 70%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: right;
+    align-self: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.LinkText {
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
+}
+
+.Footer {
+    text-align: left;
+    font-size: medium;
+    font-family: 'NanumSquareRoundR';
+    background-color: #E4E7E8;
+    align-self: center;
+    padding-left: 32px;
+    width: 100%;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
