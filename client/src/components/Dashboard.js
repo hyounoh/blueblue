@@ -6,21 +6,37 @@ const Dashboard = () => {
 
     // Define state of wordcloud data
     const [words, setWords] = useState('');
+    const [count, setCount] = useState(0);
 
     // Set event on refresh to load wordcloud data
     const onRefresh = () => {
         axios.get('http://localhost:5001/recentword?use_stopword=1')
             .then(
                 response => {
-                    let words = response.data['results']
-                    console.log(words)
+                    let words = response.data['results'];
+                    console.log(words);
 
                     setWords(words);
                 }
             )
             .catch(
                 response => {
-                    console.log(response)
+                    console.log(response);
+                }
+            );
+
+        axios.get('http://localhost:5001/petition-graph?recent=1')
+            .then(
+                response => {
+                    let count = response.data['results']['sum'];
+                    console.log(count);
+
+                    setCount(count);
+                }
+            )
+            .catch(
+                response => {
+                    console.log(response);
                 }
             );
     };
@@ -46,7 +62,7 @@ const Dashboard = () => {
                     최근 일주일 청원 개수
                 </div>
                 <div className="DashboardItemContent">
-                    00 개
+                    {count} 개
                 </div>
             </div>
         </div>
