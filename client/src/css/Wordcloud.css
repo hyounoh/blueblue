@@ -20,3 +20,10 @@
 .Refresh:hover {
     opacity: 1;
 }
+
+.PetitionList {
+    margin-top: 32px;
+    height: 70vh;
+    width: 70vw;
+    box-shadow: 0px 0px 40px #EEEEEE;
+}

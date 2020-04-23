@@ -3,7 +3,6 @@ import './App.css';
 import Title from './components/Title';
 import Dashboard from './components/Dashboard';
 import Wordcloud from './components/Wordcloud';
-import PetitionList from './components/PetitionList';
 import TimeGraph from './components/TimeGraph';
 import Footer from './components/Footer';
 
@@ -19,9 +18,6 @@ function App() {
       </div>
       <div className="Wordcloud">
         <Wordcloud></Wordcloud>
-      </div>
-      <div>
-        <PetitionList></PetitionList>
       </div>
       <div>
         <TimeGraph></TimeGraph>
