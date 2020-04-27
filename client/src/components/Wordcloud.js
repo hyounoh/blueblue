@@ -21,8 +21,6 @@ const Wordcloud = () => {
         text
             .on('click', () => {
                 if (isActive) {
-                    console.log(word.text);
-
                     // Bind Context using clicked word
                     change(word.text);
                 }
@@ -37,8 +35,6 @@ const Wordcloud = () => {
                 response => {
                     let words = response.data['results']
                     let words_formatted = words.map((word) => ({ 'text': word['word'], 'value': word['count'] }))
-                    console.log(words_formatted)
-
                     setWords(words_formatted);
                 }
             )
@@ -51,7 +47,7 @@ const Wordcloud = () => {
 
     // Load wordcloud when this page is rendered.
     useEffect(() => {
-        console.log('rendered!');
+        console.log('Wordcloud rendered!');
         onRefresh();
     }, []);
 

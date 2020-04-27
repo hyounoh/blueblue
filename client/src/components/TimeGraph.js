@@ -16,7 +16,6 @@ const TimeGraph = () => {
             .then(
                 response => {
                     let graph = response.data['results']['graph'];
-                    console.log(graph)
                     setGraph(graph);
                 }
             )
@@ -29,7 +28,7 @@ const TimeGraph = () => {
 
     // Load wordcloud when this page is rendered.
     useEffect(() => {
-        console.log('rendered!');
+        console.log('TimeGraph rendered!');
         onRefresh();
     }, []);
 

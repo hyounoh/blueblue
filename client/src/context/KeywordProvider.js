@@ -3,20 +3,24 @@ import KeywordContext from './Keyword.context';
 
 const KeywordProvider = ({ children }) => {
 
-  const change = (currKeyword) => {
-    console.log('context change is called!', currKeyword);
-    setWord(currKeyword);
+  const change = (currWord) => {
+    setKeyword(prevState => {
+      return {
+        ...prevState,
+        word: currWord
+      }
+    });
   };
 
   const initialState = {
-    word: "DefaultKeyword",
+    word: "DefaultWord",
     change
   };
 
-  const [word, setWord] = useState(initialState);
+  const [keyword, setKeyword] = useState(initialState);
 
   return (
-    <KeywordContext.Provider value={word}>
+    <KeywordContext.Provider value={keyword}>
       {children}
     </KeywordContext.Provider>
   )

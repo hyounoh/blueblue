@@ -32,7 +32,7 @@ const PetitionList = () => {
 
     // Load wordcloud when this page is rendered.
     useEffect(() => {
-        console.log('rendered!');
+        console.log('PetitionList rendered!');
         onRefresh();
     }, []);
 

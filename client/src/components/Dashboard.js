@@ -14,8 +14,6 @@ const Dashboard = () => {
             .then(
                 response => {
                     let words = response.data['results'];
-                    console.log(words);
-
                     setWords(words);
                 }
             )
@@ -29,8 +27,6 @@ const Dashboard = () => {
             .then(
                 response => {
                     let count = response.data['results']['sum'];
-                    console.log(count);
-
                     setCount(count);
                 }
             )
@@ -43,7 +39,7 @@ const Dashboard = () => {
 
     // Load wordcloud when this page is rendered.
     useEffect(() => {
-        console.log('rendered!');
+        console.log('Dashboard rendered!');
         onRefresh();
     }, []);
 
