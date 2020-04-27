@@ -3,8 +3,10 @@ import './App.css';
 import Title from './components/Title';
 import Dashboard from './components/Dashboard';
 import Wordcloud from './components/Wordcloud';
+import PetitionList from './components/PetitionList';
 import TimeGraph from './components/TimeGraph';
 import Footer from './components/Footer';
+import KeywordProvider from './context/KeywordProvider';
 
 function App() {
 
@@ -16,9 +18,14 @@ function App() {
       <div>
         <Dashboard></Dashboard>
       </div>
-      <div className="Wordcloud">
-        <Wordcloud></Wordcloud>
-      </div>
+      <KeywordProvider>
+        <div>
+          <Wordcloud></Wordcloud>
+        </div>
+        <div>
+          <PetitionList></PetitionList>
+        </div>
+      </KeywordProvider>
       <div>
         <TimeGraph></TimeGraph>
       </div>

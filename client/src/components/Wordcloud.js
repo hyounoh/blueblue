@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import '../css/Wordcloud.css'
+import React, { useState, useEffect, useContext } from 'react';
+import '../css/Wordcloud.css';
 import ReactWordcloud from 'react-wordcloud';
 import { select } from 'd3-selection';
 import RefreshIcon from '../icons/round_refresh_black_18dp.png';
-import axios from 'axios'
+import axios from 'axios';
+import KeywordContext from '../context/Keyword.context';
 
 
 const Wordcloud = () => {
 
     // Define state of wordcloud data
     const [words, setWords] = useState([]);
+    const { change } = useContext(KeywordContext);
 
     // Set callback on word in wordcloud
     const getCallback = callbackName => (word, event) => {
@@ -20,6 +22,9 @@ const Wordcloud = () => {
             .on('click', () => {
                 if (isActive) {
                     console.log(word.text);
+
+                    // Bind Context using clicked word
+                    change(word.text);
                 }
             })
             .attr('background', 'white')
