@@ -22,8 +22,18 @@ const PetitionList = () => {
   const { word } = useContext(KeywordContext);
 
   const columns = [
-    { id: "title", label: "제목", minWidth: 170, align: "left" },
-    { id: "url", label: "URL", minWidth: 100, align: "right" },
+    {
+      id: "title",
+      label: "제목",
+      align: "left",
+      minWidth: 250,
+    },
+    {
+      id: "url",
+      label: "URL",
+      align: "left",
+      minWidth: 50,
+    },
   ];
 
   const useStyles = makeStyles({
@@ -119,16 +129,17 @@ const PetitionList = () => {
                         tabIndex={-1}
                         key={petition.title}
                       >
-                        {columns.map((column) => {
-                          const value = petition[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
+                        <TableCell>{petition.title}</TableCell>
+                        <TableCell>
+                          <a
+                            className="PetitionUrl"
+                            href={petition.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {petition.url}
+                          </a>
+                        </TableCell>
                       </TableRow>
                     );
                   })}
