@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../css/PetitionList.css";
 import "../css/Common.css";
-import RefreshIcon from "../icons/round_refresh_black_18dp.png";
 import axios from "axios";
 import KeywordContext from "../context/Keyword.context";
 
@@ -19,6 +18,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 const PetitionList = () => {
   // Define state of wordcloud data
   const [petitions, setPetitions] = useState([]);
+  const [isSelectWord, setIsSelectWord] = useState(false);
   const { word } = useContext(KeywordContext);
 
   const columns = [
@@ -67,97 +67,104 @@ const PetitionList = () => {
     setPage(0);
   };
 
-  // Set event on refresh to load wordcloud data
-  const onRefresh = () => {
-    axios
-      .get("http://localhost:5001/petition-word?keyword=" + word)
-      .then((response) => {
-        let petitions = response.data["results"];
-        let petitions_formatted = petitions.map((petition) => ({
-          title: petition["title"],
-          url: petition["url"],
-        }));
-        console.log(petitions_formatted);
-
-        setPetitions(petitions_formatted);
-      })
-      .catch((response) => {
-        console.log(response);
-      });
-  };
-
   // Load wordcloud when this page is rendered.
   useEffect(() => {
     console.log("PetitionList rendered!");
-    onRefresh();
+    console.log("word", word);
+    if (word !== "DefaultWord") {
+      axios
+        .get("http://localhost:5001/petition-word?keyword=" + word)
+        .then((response) => {
+          let petitions = response.data["results"];
+          let petitions_formatted = petitions.map((petition) => ({
+            title: petition["title"],
+            url: petition["url"],
+          }));
+          console.log(petitions_formatted);
+
+          setPetitions(petitions_formatted);
+          setIsSelectWord(true);
+        })
+        .catch((response) => {
+          console.log(response);
+        });
+    }
   }, [word]);
 
   return (
     <div className="Container">
-      <div className="ContainerHeader">
-        <div className="ContainerTitle">'{word}' 단어가 포함된 청원 목록</div>
-        <div className="SizedBox"></div>
-        <div className="Refresh" onClick={onRefresh}>
-          <img src={RefreshIcon} alt="Refresh"></img>
-        </div>
-      </div>
-      <div className="ContainerContent">
-        <Paper className={classes.root}>
-          <TableContainer className={classes.container}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {petitions
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((petition) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={petition.title}
-                      >
-                        <TableCell>{petition.title}</TableCell>
-                        <TableCell>
-                          <a
-                            className="PetitionUrl"
-                            href={petition.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {petition.url}
-                          </a>
+      {isSelectWord ? (
+        <div className="PetitionContainer">
+          <div className="ContainerHeader">
+            <div className="ContainerTitle">
+              '{word}' 단어가 포함된 청원 목록
+            </div>
+            <div className="SizedBox"></div>
+          </div>
+          <div className="ContainerContent">
+            <Paper className={classes.root}>
+              <TableContainer className={classes.container}>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      {columns.map((column) => (
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          style={{ minWidth: column.minWidth }}
+                        >
+                          {column.label}
                         </TableCell>
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            className={classes.pagination}
-            rowsPerPageOptions={[5, 10]}
-            component="div"
-            count={petitions.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </div>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {petitions
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((petition) => {
+                        return (
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={petition.title}
+                          >
+                            <TableCell>{petition.title}</TableCell>
+                            <TableCell>
+                              <a
+                                className="PetitionUrl"
+                                href={petition.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {petition.url}
+                              </a>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <TablePagination
+                className={classes.pagination}
+                rowsPerPageOptions={[5, 10]}
+                component="div"
+                count={petitions.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage}
+              />
+            </Paper>
+          </div>
+        </div>
+      ) : (
+        "위쪽의 워드클라우드에서 단어를 선택해주세요"
+      )}
     </div>
   );
 };
