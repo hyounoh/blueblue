@@ -80,8 +80,7 @@ class MySQLController:
 
         sql = "SELECT DATE_FORMAT(pm.date_start, '%Y-%m-%d') as date, COUNT(*) as count FROM petition_meta pm"
         sql += " WHERE pm.date_start > DATE(NOW()) - INTERVAL 7 DAY" if recent else ""
-        sql += " GROUP BY pm.date_start ORDER BY pm.date_start"
-        sql += " DESC" if recent else " "
+        sql += " GROUP BY pm.date_start ORDER BY pm.date_start DESC"
         sql += ";" if recent else " LIMIT 30;"
 
         curs.execute(sql)

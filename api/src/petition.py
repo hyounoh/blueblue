@@ -58,6 +58,7 @@ class Graph(Resource):
         results = defaultdict(list)
         results['sum'] = sum(petition[1] for petition in petition_graph)
         results['graph'] = [{"date": petition[0], "count": petition[1]} for petition in petition_graph]
+        results['graph'].reverse()
 
         # response
         return output_json({
