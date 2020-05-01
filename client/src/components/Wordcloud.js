@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "../css/Wordcloud.css";
 import "../css/Common.css";
 import ReactWordcloud from "react-wordcloud";
@@ -7,10 +7,15 @@ import RefreshIcon from "../icons/round_refresh_black_18dp.png";
 import axios from "axios";
 import KeywordContext from "../context/Keyword.context";
 
+const scrollToRef = (ref) => window.scrollTo({ top: 1000, behavior: "smooth" });
+
 const Wordcloud = () => {
   // Define state of wordcloud data
   const [words, setWords] = useState([]);
   const { change } = useContext(KeywordContext);
+
+  const myRef = useRef(null);
+  const executeScroll = () => scrollToRef(myRef);
 
   // Set callback on word in wordcloud
   const getCallback = (callbackName) => (word, event) => {
@@ -22,6 +27,7 @@ const Wordcloud = () => {
         if (isActive) {
           // Bind Context using clicked word
           change(word.text);
+          executeScroll();
         }
       })
       .attr("background", "white");

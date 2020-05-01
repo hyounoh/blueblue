@@ -1,12 +1,12 @@
-import React from 'react';
-import './App.css';
-import Title from './components/Title';
-import Dashboard from './components/Dashboard';
-import Wordcloud from './components/Wordcloud';
-import PetitionList from './components/PetitionList';
-import TimeGraph from './components/TimeGraph';
-import Footer from './components/Footer';
-import KeywordProvider from './context/KeywordProvider';
+import React from "react";
+import "./App.css";
+import Title from "./components/Title";
+import Dashboard from "./components/Dashboard";
+import Wordcloud from "./components/Wordcloud";
+import PetitionList from "./components/PetitionList";
+import TimeGraph from "./components/TimeGraph";
+import Footer from "./components/Footer";
+import KeywordProvider from "./context/KeywordProvider";
 
 function App() {
 
