@@ -13,7 +13,13 @@
   - React.js를 이용한 국민청원 분석 결과 Visualization
 
 - API
+
   - Flask를 이용한 국민청원 분석 결과 RestAPI
+
+- 화면 예시 (기본)
+  ![screencapture_init](./screencapture_init.png)
+- 화면 예시 (단어 선택)
+  ![screencapture_selectword](./screencapture_selectword.png)
 
 ## Environment
 
