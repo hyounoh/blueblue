@@ -142,4 +142,4 @@ def parse_page(driver, url):
 
 
 def filter_text(text):
-    return re.sub('[^0-9a-zA-Zㄱ-힗 .]', '', text)
+    return re.sub('[^0-9a-zA-Zㄱ-힗 .,]', '', text)
