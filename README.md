@@ -56,12 +56,12 @@
   - public - React entry 페이지
   - src
     - components - 컴포넌트들
-      - Dashboard.js
-      - Footer.js
-      - PetitionList.js
-      - TimeGraph.js
-      - Title.js
-      - Wordcloud.js
+      - Dashboard.js - 상단 요약 영역
+      - Footer.js - 하단 푸터 영역
+      - PetitionList.js - 키워드별 청원 목록 영역
+      - TimeGraph.js - 청원 개수 시계열 그래프 영역
+      - Title.js - 페이지 제목 영역
+      - Wordcloud.js - 워드클라우드 영역
     - context - 워드클라우드 키워드 컨텍스트
       - Keyword.context.js
       - KeywordProvider.js
@@ -73,9 +73,10 @@
       - TimeGraph.css
       - Title.css
       - Wordcloud.css
-    - fonts
-    - icons
-    - services
+    - fonts - 폰트들
+    - icons - 아이콘들
+    - services - 비즈니스 로직
+      - api.js - RestAPI 커뮤니케이터
     - App.css
     - App.js
     - App.test.js
