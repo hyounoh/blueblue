@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../css/PetitionList.css";
 import "../css/Common.css";
 import axios from "axios";
+import config from "../settings/config.json";
 import KeywordContext from "../context/Keyword.context";
 
 // Table
@@ -73,7 +74,14 @@ const PetitionList = () => {
     console.log("word", word);
     if (word !== "DefaultWord") {
       axios
-        .get("http://localhost:5001/petition-word?keyword=" + word)
+        .get(
+          "http://" +
+            config.host +
+            ":" +
+            config.port +
+            "/petition-word?keyword=" +
+            word
+        )
         .then((response) => {
           let petitions = response.data["results"];
           let petitions_formatted = petitions.map((petition) => ({

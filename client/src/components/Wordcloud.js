@@ -5,6 +5,7 @@ import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";
 import RefreshIcon from "../icons/round_refresh_black_18dp.png";
 import axios from "axios";
+import config from "../settings/config.json";
 import KeywordContext from "../context/Keyword.context";
 
 const scrollToRef = (ref) => window.scrollTo({ top: 1000, behavior: "smooth" });
@@ -36,7 +37,13 @@ const Wordcloud = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get("http://localhost:5001/wordcloud?use_stopword=1&limit=20")
+      .get(
+        "http://" +
+          config.host +
+          ":" +
+          config.port +
+          "/wordcloud?use_stopword=1&limit=20"
+      )
       .then((response) => {
         let words = response.data["results"];
         let words_formatted = words.map((word) => ({
