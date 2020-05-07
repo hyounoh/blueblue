@@ -7,13 +7,21 @@ import PetitionList from "./components/PetitionList";
 import TimeGraph from "./components/TimeGraph";
 import Footer from "./components/Footer";
 import KeywordProvider from "./context/KeywordProvider";
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 function App() {
+  const options = {
+    timeout: 10000,
+    position: positions.MIDDLE,
+  };
 
   return (
     <div className="App">
       <div className="Title">
-        <Title></Title>
+        <Provider template={AlertTemplate} {...options}>
+          <Title></Title>
+        </Provider>
       </div>
       <div>
         <Dashboard></Dashboard>

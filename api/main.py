@@ -4,6 +4,7 @@ from flask_restful_swagger_2 import Api
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
+from src import *
 from src.word import *
 from src.petition import *
 
@@ -19,6 +20,7 @@ api = Api(app, title='API Template', api_version='0.0.1', api_spec_url='/swagger
 
 # add resources
 # ex) http://localhost:5000/api_resource_name
+#api.add_resource(Status, '/status')
 api.add_resource(WordCloud, '/wordcloud')
 api.add_resource(Graph, '/petition-graph')
 api.add_resource(Word, '/petition-word')
