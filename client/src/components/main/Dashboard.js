@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../css/Dashboard.css";
+import "../../css/Dashboard.css";
 import axios from "axios";
-import config from "../settings/config.json";
+import config from "../../settings/config.json";
 
 const Dashboard = () => {
   // Define state of wordcloud data

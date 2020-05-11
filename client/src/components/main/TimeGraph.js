@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "../css/TimeGraph.css";
-import "../../node_modules/react-vis/dist/style.css";
-import RefreshIcon from "../icons/round_refresh_black_18dp.png";
+import "../../css/TimeGraph.css";
+import "../../../node_modules/react-vis/dist/style.css";
+import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";
-import config from "../settings/config.json";
+import config from "../../settings/config.json";
 import { ResponsiveBar } from "@nivo/bar";
 
 const TimeGraph = () => {

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "../css/Wordcloud.css";
-import "../css/Common.css";
+import "../../css/Wordcloud.css";
+import "../../css/Common.css";
 import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";
-import RefreshIcon from "../icons/round_refresh_black_18dp.png";
+import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";
-import config from "../settings/config.json";
-import KeywordContext from "../context/Keyword.context";
+import config from "../../settings/config.json";
+import KeywordContext from "../../context/Keyword.context";
 
 const scrollToRef = (ref) => window.scrollTo({ top: 1000, behavior: "smooth" });
 

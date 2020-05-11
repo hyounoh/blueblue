@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../css/PetitionList.css";
-import "../css/Common.css";
+import "../../css/PetitionList.css";
+import "../../css/Common.css";
 import axios from "axios";
-import config from "../settings/config.json";
-import KeywordContext from "../context/Keyword.context";
+import config from "../../settings/config.json";
+import KeywordContext from "../../context/Keyword.context";
 
 // Table
 import { makeStyles } from "@material-ui/core/styles";

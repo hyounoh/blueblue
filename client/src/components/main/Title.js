@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
-import config from "../settings/config.json";
-import "../css/Title.css";
+import config from "../../settings/config.json";
+import "../../css/Title.css";
 
 const Title = () => {
   const alert = useAlert();
