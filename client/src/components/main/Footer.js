@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/Footer.css";
+import "../../css/main/Footer.css";
 
 const Title = () => {
   return (

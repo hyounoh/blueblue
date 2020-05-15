@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../css/Dashboard.css";
+import "../../css/main/Dashboard.css";
 import axios from "axios";
 import config from "../../settings/config.json";
 

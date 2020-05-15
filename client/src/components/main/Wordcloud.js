@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "../../css/Wordcloud.css";
+import "../../css/main/Wordcloud.css";
 import "../../css/Common.css";
 import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";

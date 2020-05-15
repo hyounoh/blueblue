@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../css/PetitionList.css";
+import "../../css/main/PetitionList.css";
 import "../../css/Common.css";
 import axios from "axios";
 import config from "../../settings/config.json";
