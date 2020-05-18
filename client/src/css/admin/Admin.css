@@ -1,0 +1,12 @@
+.Admin-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Stopword-wrapper {
+  height: fit-content;
+  width: fit-content;
+  align-self: center;
+}
