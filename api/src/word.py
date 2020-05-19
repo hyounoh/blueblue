@@ -118,3 +118,101 @@ class RecentWord(Resource):
             "message": "success",
             "results": results
         }, 200)
+
+
+class Stopword(Resource):
+    @swagger.doc({
+        "description": "get a list of stopword",
+        "tags": ["Word"],
+        "parameters": [
+
+        ],
+        "responses": {
+            "200": {
+                "description": "success",
+                "examples": {
+                    "application/json": {
+                        "message": "success",
+                        "results": [
+                            "stopword #1",
+                            "stopword #2",
+                            "stopword #3",
+                            "stopword #n",
+                        ]
+                    }
+                }
+            },
+            "500": {
+                "description": "error message",
+                "examples": {
+                    "application/json": {
+                        "message": "error message"
+                    }
+                }
+            }
+        }
+    })
+    def get(self):
+        # Compose wordcloud data
+        words = mysql_controller.read_stopword()
+        words = [word[1] for word in words]
+        results = words
+
+        # response
+        return output_json({
+            "message": "success",
+            "results": results
+        }, 200)
+
+    @swagger.doc({
+        "description": "create a stopword",
+        "tags"       : ["Word"],
+        "parameters" : [
+            {
+                "name"       : "stopword",
+                "type"       : "string",
+                "in"         : "query",
+                "required"   : True,
+                "description": "a word which not be used"
+            },
+        ],
+        "responses"  : {
+            "200": {
+                "description": "success",
+                "examples"   : {
+                    "application/json": {
+                        "message": "success",
+                        "results": "input stopword"
+                    }
+                }
+            },
+            "500": {
+                "description": "error message",
+                "examples"   : {
+                    "application/json": {
+                        "message": "error message"
+                    }
+                }
+            }
+        }
+    })
+    def post(self):
+        # Check args
+        parser = reqparse.RequestParser()
+        parser.add_argument('stopword', type=str)
+
+        # Handle requested args
+        args = parser.parse_args()
+        stopword = args.get('stopword')
+
+        # Compose wordcloud data
+        stopword_id = mysql_controller.create_stopword(stopword)
+
+        # response
+        return output_json({
+            "message": "success",
+            "results": {
+                "id": stopword_id,
+                "stopword": stopword
+            }
+        }, 200)
