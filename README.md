@@ -36,7 +36,52 @@
 
 ## Installation
 
+- Crawler
+1. Install Python (up to 3.5)
+2. Type below on terminal
+```
+~ cd crawler
+~ python3 -m virtualenv venv
+~ source venv/bin/activate
+~ (venv) pip install requirements.txt (in virtual environment)
+```
+- API
+1. Install Python (up to 3.5)
+2. Type below on terminal
+```
+~ cd crawler
+~ python3 -m virtualenv venv
+~ source venv/bin/activate
+~ (venv) pip install requirements.txt (in virtual environment)
+```
+- Client
+1. Install Node.js from https://nodejs.org/
+2. (optional) Install Yarn from https://classic.yarnpkg.com/en/docs/install#mac-stable
+3. Type below on terminal
+```
+~ cd client
+~ npm install
+```
+
 ## Getting Started
+
+- Crawler
+```
+~ cd crawler
+~ source venv/bin/activate
+~ python main.py
+```
+- API
+```
+~ cd api
+~ source venv/bin/activate
+~ python main.py
+```
+- Client
+```
+~ cd client
+~ npm start
+```
 
 ## File Manifest
 
@@ -108,6 +153,9 @@
 - README.md
 
 ## Usage
+
+1. When start client you can see the host and port like http://localhost:3000
+2. Type this url in web browser
 
 ## Troubleshooting
 
