@@ -13,7 +13,7 @@ app = Flask(__name__)
 cors = CORS(app, resources={r'*': {'origins': '*'}})
 
 # Set limiter
-limiter = Limiter(app, key_func=get_remote_address, default_limits=["100 per day"])
+limiter = Limiter(app, key_func=get_remote_address, default_limits=["1000 per day"])
 
 # Set swagger
 api = Api(app, title='API Template', api_version='0.0.1', api_spec_url='/swagger', host='localhost',
