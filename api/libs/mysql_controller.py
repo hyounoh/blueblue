@@ -8,13 +8,12 @@ class MySQLController:
     with open('config/config.json') as f:
       self.config = json.load(f)
 
-    with open('config/stopword.json', encoding='UTF8') as f:
-      self.stopwords = json.load(f)
-
     self.host = self.config['host']
     self.user = self.config['user']
     self.password = self.config['password']
     self.db = self.config['db']
+
+    self.stopwords = self.read_stopword()
 
     print('MySQLController init')
 
@@ -30,8 +29,8 @@ class MySQLController:
     where_clause = None
     if use_stopword:
       where_clause = "WHERE "
-      for stopword in self.stopwords['stopword']:
-        where_clause += 'NOT `text` = ' + '\"' + stopword + '\" AND '
+      for stopword in self.stopwords:
+        where_clause += 'NOT `text` = ' + '\"' + stopword[1] + '\" AND '
       where_clause = where_clause[:len(where_clause) - 4]
 
     sql = ""
@@ -56,8 +55,8 @@ class MySQLController:
     # Compose where clause if using stopword
     where_clause = "WHERE w.petition_meta_id = pm.id AND pm.date_start > DATE(NOW()) - INTERVAL 7 DAY "
     if use_stopword:
-      for stopword in self.stopwords['stopword']:
-        where_clause += 'AND NOT `text` = ' + '\"' + stopword + '\" '
+      for stopword in self.stopwords:
+        where_clause += 'AND NOT `text` = ' + '\"' + stopword[1] + '\" '
 
     sql = ""
     sql += "SELECT text, COUNT(*) as count FROM word w, petition_meta pm "

@@ -21,9 +21,11 @@ api = Api(app, title='API Template', api_version='0.0.1', api_spec_url='/swagger
 
 # Add resources
 api.add_resource(Status, '/status')
-api.add_resource(WordCloud, '/wordcloud')
+
 api.add_resource(Graph, '/petition-graph')
 api.add_resource(Word, '/petition-word')
+
+api.add_resource(WordCloud, '/wordcloud')
 api.add_resource(RecentWord, '/recentword')
 api.add_resource(Stopword, '/stopword')
 
