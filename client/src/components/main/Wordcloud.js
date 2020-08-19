@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "../../css/main/Wordcloud.css";
-import "../../css/Common.css";
+import "./Wordcloud.css";
+import "../Common.css";
 import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";
 import RefreshIcon from "../../icons/round_refresh_black_18dp.png";

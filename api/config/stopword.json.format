@@ -1,9 +1,0 @@
-{
-  "stopword": [
-    "stopword #1",
-    "stopword #2",
-    "stopword #3",
-    "...",
-    "stopword #n"
-  ]
-}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../../css/admin/Stopword.css";
-import "../../css/Common.css";
+import "./Stopword.css";
+import "../Common.css";
 import axios from "axios";
 import config from "../../settings/config.json";
 

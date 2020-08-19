@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../css/main/TimeGraph.css";
+import "./TimeGraph.css";
 import "../../../node_modules/react-vis/dist/style.css";
 import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";

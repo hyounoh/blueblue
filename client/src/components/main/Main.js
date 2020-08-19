@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/main/Main.css";
+import "./Main.css";
 
 import Title from "./Title";
 import Dashboard from "./Dashboard";

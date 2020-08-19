@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import "../../css/main/PetitionList.css";
-import "../../css/Common.css";
+import "./PetitionList.css";
+import "../Common.css";
 import axios from "axios";
 import config from "../../settings/config.json";
 import KeywordContext from "../../context/Keyword.context";
