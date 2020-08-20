@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "./Wordcloud.css";
-import "../Common.css";
+import "./Wordcloud.scss";
+import "../Common.scss";
 import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";
 import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
@@ -37,13 +37,7 @@ const Wordcloud = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get(
-        "http://" +
-          config.host +
-          ":" +
-          config.port +
-          "/wordcloud?use_stopword=1&limit=20"
-      )
+      .get("http://" + config.host + ":" + config.port + "/wordcloud?use_stopword=1&limit=20")
       .then((response) => {
         let words = response.data["results"];
         let words_formatted = words.map((word) => ({

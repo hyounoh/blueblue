@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./TimeGraph.css";
+import "./TimeGraph.scss";
 import "../../../node_modules/react-vis/dist/style.css";
 import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";
@@ -13,9 +13,7 @@ const TimeGraph = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get(
-        "http://" + config.host + ":" + config.port + "/petition-graph?recent=0"
-      )
+      .get("http://" + config.host + ":" + config.port + "/petition-graph?recent=0")
       .then((response) => {
         let graph = response.data["results"]["graph"];
         setGraph(graph);

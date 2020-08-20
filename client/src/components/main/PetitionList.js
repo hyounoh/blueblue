@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./PetitionList.css";
-import "../Common.css";
+import "./PetitionList.scss";
+import "../Common.scss";
 import axios from "axios";
 import config from "../../settings/config.json";
 import KeywordContext from "../../context/Keyword.context";
@@ -74,14 +74,7 @@ const PetitionList = () => {
     console.log("word", word);
     if (word !== "DefaultWord") {
       axios
-        .get(
-          "http://" +
-            config.host +
-            ":" +
-            config.port +
-            "/petition-word?keyword=" +
-            word
-        )
+        .get("http://" + config.host + ":" + config.port + "/petition-word?keyword=" + word)
         .then((response) => {
           let petitions = response.data["results"];
           let petitions_formatted = petitions.map((petition) => ({
@@ -104,9 +97,7 @@ const PetitionList = () => {
       {isSelectWord ? (
         <div className="PetitionContainer">
           <div className="ContainerHeader">
-            <div className="ContainerTitle">
-              '{word}' 단어가 포함된 청원 목록
-            </div>
+            <div className="ContainerTitle">'{word}' 단어가 포함된 청원 목록</div>
             <div className="SizedBox"></div>
           </div>
           <div className="ContainerContent">
@@ -116,44 +107,25 @@ const PetitionList = () => {
                   <TableHead>
                     <TableRow>
                       {columns.map((column) => (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}
-                          style={{ minWidth: column.minWidth }}
-                        >
+                        <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
                           {column.label}
                         </TableCell>
                       ))}
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {petitions
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((petition) => {
-                        return (
-                          <TableRow
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={petition.title}
-                          >
-                            <TableCell>{petition.title}</TableCell>
-                            <TableCell>
-                              <a
-                                className="PetitionUrl"
-                                href={petition.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {petition.url}
-                              </a>
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
+                    {petitions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((petition) => {
+                      return (
+                        <TableRow hover role="checkbox" tabIndex={-1} key={petition.title}>
+                          <TableCell>{petition.title}</TableCell>
+                          <TableCell>
+                            <a className="PetitionUrl" href={petition.url} target="_blank" rel="noopener noreferrer">
+                              {petition.url}
+                            </a>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </TableContainer>

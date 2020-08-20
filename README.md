@@ -95,7 +95,8 @@ http://www.studiomug8.com/blueblue/
 
 ```
 ~ cd client
-~ npm start
+~ npm run build
+~ serve -s build -l [port number]
 ```
 
 ## File Manifest

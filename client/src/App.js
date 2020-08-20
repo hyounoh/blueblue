@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Main from "./components/main/Main";
 import Admin from "./components/admin/Admin";
 

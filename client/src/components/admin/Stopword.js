@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./Stopword.css";
-import "../Common.css";
+import "./Stopword.scss";
+import "../Common.scss";
 import axios from "axios";
 import config from "../../settings/config.json";
 
@@ -91,31 +91,20 @@ const Stopword = () => {
                 <TableHead>
                   <TableRow>
                     {columns.map((column) => (
-                      <TableCell
-                        key={column.id}
-                        align={column.align}
-                        style={{ minWidth: column.minWidth }}
-                      >
+                      <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
                         {column.label}
                       </TableCell>
                     ))}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {stopwords
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((stopword) => {
-                      return (
-                        <TableRow
-                          hover
-                          role="checkbox"
-                          tabIndex={-1}
-                          key={stopword.id}
-                        >
-                          <TableCell>{stopword.word}</TableCell>
-                        </TableRow>
-                      );
-                    })}
+                  {stopwords.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((stopword) => {
+                    return (
+                      <TableRow hover role="checkbox" tabIndex={-1} key={stopword.id}>
+                        <TableCell>{stopword.word}</TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
             </TableContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Admin.css";
+import "./Admin.scss";
 import Stopword from "./Stopword";
 
 const Admin = () => {

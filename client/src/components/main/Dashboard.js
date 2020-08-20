@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Dashboard.css";
+import "./Dashboard.scss";
 import axios from "axios";
 import config from "../../settings/config.json";
 
@@ -11,13 +11,7 @@ const Dashboard = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get(
-        "http://" +
-          config.host +
-          ":" +
-          config.port +
-          "/recentword?use_stopword=1"
-      )
+      .get("http://" + config.host + ":" + config.port + "/recentword?use_stopword=1")
       .then((response) => {
         let words = response.data["results"];
         setWords(words);
@@ -27,9 +21,7 @@ const Dashboard = () => {
       });
 
     axios
-      .get(
-        "http://" + config.host + ":" + config.port + "/petition-graph?recent=1"
-      )
+      .get("http://" + config.host + ":" + config.port + "/petition-graph?recent=1")
       .then((response) => {
         let count = response.data["results"]["sum"];
         setCount(count);
