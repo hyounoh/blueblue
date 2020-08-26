@@ -11,9 +11,7 @@ const Title = () => {
   const onRefresh = () => {
     axios
       .get("http://" + config.host + ":" + config.port + "/status")
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((response) => {
         console.log(response);
         alert.show("Please check internet connection");
