@@ -46,3 +46,47 @@
     @content;
   }
 }
+
+@mixin refresh {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+}
+
+@mixin refresh-hover {
+  opacity: 1;
+}
+
+@mixin container {
+  font-size: x-large;
+  font-family: "NanumSquareRoundR";
+  height: 70vh;
+  width: 70vw;
+  margin-top: 32px;
+  box-shadow: 0px 0px 40px #eeeeee;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container-header {
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+
+@mixin container-title {
+}
+
+@mixin container-content {
+  margin-top: 16px;
+  width: 80%;
+  height: 80%;
+}
+
+@mixin sized-box {
+  flex: 1;
+}

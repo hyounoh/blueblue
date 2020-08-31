@@ -1,8 +1,30 @@
-.PetitionContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+@import "../../mixin.scss";
+
+.Container {
+  @include container;
+
+  .PetitionContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .ContainerHeader {
+      @include container-header;
+
+      .ContainerTitle {
+        @include container-title;
+      }
+
+      .SizedBox {
+        @include sized-box;
+      }
+    }
+
+    .ContainerContent {
+      @include container-content;
+    }
+  }
 }
