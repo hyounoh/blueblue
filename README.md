@@ -117,29 +117,36 @@ http://www.studiomug8.com/blueblue/
   - public - React entry 페이지
   - src
     - components - 컴포넌트들
-      - Dashboard.js - 상단 요약 영역
-      - Footer.js - 하단 푸터 영역
-      - PetitionList.js - 키워드별 청원 목록 영역
-      - TimeGraph.js - 청원 개수 시계열 그래프 영역
-      - Title.js - 페이지 제목 영역
-      - Wordcloud.js - 워드클라우드 영역
+      - admin
+        - Admin.js
+        - Admin.scss
+        - Stopword.js
+        - Stopword.scss
+      - main
+        - Dashboard.js - 상단 요약 영역
+        - Dashboard.scss
+        - Footer.js - 하단 푸터 영역
+        - Footer.scss
+        - PetitionList.js - 키워드별 청원 목록 영역
+        - PetitionList.scss
+        - TimeGraph.js - 청원 개수 시계열 그래프 영역
+        - TimeGraph.scss
+        - Title.js - 페이지 제목 영역
+        - Title.scss
+        - Wordcloud.js - 워드클라우드 영역
+        - Wordcloud.scss
     - context - 워드클라우드 키워드 컨텍스트
       - Keyword.context.js
       - KeywordProvider.js
-    - css
-      - Common.css
-      - Dashboard.css
-      - Footer.css
-      - PetitionList.css
-      - TimeGraph.css
-      - Title.css
-      - Wordcloud.css
     - fonts - 폰트들
     - icons - 아이콘들
     - services - 비즈니스 로직
       - api.js - RestAPI 커뮤니케이터
-    - App.css
+    - settings
+    - _mixin.scss - mixin 모음
+    - _variables.scss - 기기별 사이즈 정의 및 기타 변수 모음
     - App.js
+    - App.scss
     - App.test.js
     - index.css
     - index.js
@@ -149,7 +156,6 @@ http://www.studiomug8.com/blueblue/
   - .gitignore
   - package-lock.json
   - package.json
-  - README.md
   - yarn.lock
 - crawler
   - config
