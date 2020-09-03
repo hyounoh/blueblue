@@ -73,7 +73,7 @@ const PetitionList = () => {
     console.log("word", word);
     if (word !== "DefaultWord") {
       axios
-        .get("http://" + config.host + ":" + config.port + "/petition-word?keyword=" + word)
+        .get("http://" + config.host + ":" + config.port + "/petition?keyword=" + word + "&interval=30")
         .then((response) => {
           let petitions = response.data["results"];
           let petitions_formatted = petitions.map((petition) => ({
@@ -96,7 +96,7 @@ const PetitionList = () => {
       {isSelectWord ? (
         <div className="PetitionContainer">
           <div className="ContainerHeader">
-            <div className="ContainerTitle">'{word}' 단어가 포함된 청원 목록</div>
+            <div className="ContainerTitle">'{word}' 단어가 포함된 청원 목록 (최근 30일)</div>
             <div className="SizedBox"></div>
           </div>
           <div className="ContainerContent">

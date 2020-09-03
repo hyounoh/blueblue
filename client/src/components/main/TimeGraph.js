@@ -13,7 +13,7 @@ const TimeGraph = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get("http://" + config.host + ":" + config.port + "/petition-graph?recent=0")
+      .get("http://" + config.host + ":" + config.port + "/graph?interval=30")
       .then((response) => {
         let graph = response.data["results"]["graph"];
         setGraph(graph);
@@ -32,7 +32,7 @@ const TimeGraph = () => {
   return (
     <div className="Container">
       <div className="ContainerHeader">
-        <div className="ContainerTitle">시계열 그래프</div>
+        <div className="ContainerTitle">시계열 그래프 (최근 30일)</div>
         <div className="SizedBox"></div>
         <div className="Refresh" onClick={onRefresh}>
           <img src={RefreshIcon} alt="Refresh"></img>

@@ -11,17 +11,17 @@ const Dashboard = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get("http://" + config.host + ":" + config.port + "/recentword?use_stopword=1")
+      .get("http://" + config.host + ":" + config.port + "/word?use_stopword=1&limit=3&interval=7")
       .then((response) => {
         let words = response.data["results"];
-        setWords(words);
+        setWords(words.map((word) => word.word).join(", "));
       })
       .catch((response) => {
         console.log(response);
       });
 
     axios
-      .get("http://" + config.host + ":" + config.port + "/petition-graph?recent=1")
+      .get("http://" + config.host + ":" + config.port + "/graph?interval=3")
       .then((response) => {
         let count = response.data["results"]["sum"];
         setCount(count);

@@ -11,11 +11,11 @@ class Graph(Resource):
     "tags"       : ["Petition"],
     "parameters" : [
       {
-        "name"       : "recent",
+        "name"       : "interval",
         "type"       : "integer",
         "in"         : "query",
         "required"   : True,
-        "description": "0 or 1, if true get the number of petition of last week (default: 1 True)"
+        "description": ""
       }
     ],
     "responses"  : {
@@ -46,14 +46,15 @@ class Graph(Resource):
   def get(self):
     # Check args
     parser = reqparse.RequestParser()
-    parser.add_argument('recent', type=int)
+    parser.add_argument('interval', type=int)
 
     # Handle requested args
     args = parser.parse_args()
-    recent = args.get('recent')
+    interval = args.get('interval')
+    if not interval: return output_json({"message": "no interval"}, 500)
 
     # Compose petition-graph data
-    petition_graph = mysql_controller.petition_graph(recent=recent)
+    petition_graph = mysql_controller.read_graph(interval=interval)
     results = defaultdict(list)
     results['sum'] = sum(petition[1] for petition in petition_graph)
     results['graph'] = [{"date": petition[0], "count": petition[1]} for petition in petition_graph]
@@ -66,17 +67,31 @@ class Graph(Resource):
     }, 200)
 
 
-class Word(Resource):
+class Petition(Resource):
   @swagger.doc({
-    "description": "get a list of petition including input keyword maximum 25 petitions",
+    "description": "get a list of petition",
     "tags"       : ["Petition"],
     "parameters" : [
       {
         "name"       : "keyword",
         "type"       : "string",
         "in"         : "query",
-        "required"   : True,
-        "description": "keyword"
+        "required"   : False,
+        "description": "a keyword included in petition"
+      },
+      {
+        "name"       : "limit",
+        "type"       : "integer",
+        "in"         : "query",
+        "required"   : False,
+        "description": "a number of petitions"
+      },
+      {
+        "name"       : "interval",
+        "type"       : "integer",
+        "in"         : "query",
+        "required"   : False,
+        "description": ""
       }
     ],
     "responses"  : {
@@ -108,14 +123,19 @@ class Word(Resource):
     # Check args
     parser = reqparse.RequestParser()
     parser.add_argument('keyword', type=str)
+    parser.add_argument('limit', type=int)
+    parser.add_argument('interval', type=int)
 
     # Handle requested args
     args = parser.parse_args()
     keyword = args.get('keyword')
+    if not keyword: return output_json({"message": "no keyword"}, 500)
+    interval = args.get('interval')
+    if not interval: return output_json({"message": "no interval"}, 500)
 
-    # Compose petition-graph data
-    petition_word = mysql_controller.petition_word(keyword=keyword)
-    results = [{"title": petition[1], "url": petition[2]} for petition in petition_word]
+    # Compose petition list
+    petitions = mysql_controller.read_petitions(keyword=keyword, interval=interval)
+    results = [{"title": petition[1], "url": petition[2]} for petition in petitions]
 
     # response
     return output_json({

@@ -36,7 +36,7 @@ const Wordcloud = () => {
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
     axios
-      .get("http://" + config.host + ":" + config.port + "/wordcloud?use_stopword=1&limit=20")
+      .get("http://" + config.host + ":" + config.port + "/word?use_stopword=1&limit=30&interval=30")
       .then((response) => {
         let words = response.data["results"];
         let words_formatted = words.map((word) => ({
@@ -59,7 +59,7 @@ const Wordcloud = () => {
   return (
     <div className="Container">
       <div className="ContainerHeader">
-        <div className="ContainerTitle">워드 클라우드</div>
+        <div className="ContainerTitle">워드 클라우드 (최근 30일)</div>
         <div className="SizedBox"></div>
         <div className="Refresh" onClick={onRefresh}>
           <img src={RefreshIcon} alt="Refresh"></img>

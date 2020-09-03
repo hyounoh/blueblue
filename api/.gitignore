@@ -3,7 +3,6 @@ reated by https://www.gitignore.io/api/python
 
 .idea/
 config/config.json
-config/stopword.json
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
