@@ -1,37 +1,78 @@
+@import "../../mixin.scss";
+
 .Dashboard {
-    margin-top: 32px;
-    height: 200px;
-    width: 70vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+  @include flex-default-row;
 
-.DashboardItem {
-    height: 180px;
-    display: flex;
+  margin-top: 32px;
+  height: 0 auto;
+  width: 70vw;
+
+  .DashboardItem {
+    @include flex-default-column;
+
     flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 40px #DDDDDD;
-}
+    height: 128px;
+    box-shadow: 0px 0px 32px #dddddd;
 
-.Word {
+    .DashboardItemTitle {
+      font-size: x-large;
+      font-family: "NanumSquareRoundB";
+    }
+
+    .DashboardItemContent {
+      margin-top: 16px;
+      font-size: large;
+      font-family: "NanumSquareRoundR";
+    }
+  }
+
+  .Word {
     margin-right: 16px;
-}
+  }
 
-.Count {
+  .Count {
     margin-left: 16px;
+  }
 }
 
-.DashboardItemTitle {
-    font-size: x-large;
-    font-family: 'NanumSquareRoundB';
+@include desktop {
 }
 
-.DashboardItemContent {
-    margin-top: 20px;
-    font-size: large;
-    font-family: 'NanumSquareRoundR';
+@include tablet {
+}
+
+@include mobile {
+  .Dashboard {
+    @include flex-default-column;
+
+    width: 90vw;
+
+    .DashboardItem {
+      @include flex-default-column;
+
+      width: 100%;
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      .DashboardItemTitle {
+        font-size: large;
+        font-family: "NanumSquareRoundB";
+      }
+
+      .DashboardItemContent {
+        margin-top: 16px;
+        font-size: medium;
+        font-family: "NanumSquareRoundR";
+      }
+    }
+
+    .Word {
+      margin-right: 0px;
+    }
+
+    .Count {
+      margin-top: 16px;
+      margin-left: 0px;
+    }
+  }
 }

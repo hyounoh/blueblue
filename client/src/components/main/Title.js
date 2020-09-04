@@ -20,7 +20,6 @@ const Title = () => {
 
   // Load wordcloud when this page is rendered.
   useEffect(() => {
-    console.log("Title rendered!");
     onRefresh();
   });
 

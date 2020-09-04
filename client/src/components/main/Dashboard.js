@@ -33,7 +33,6 @@ const Dashboard = () => {
 
   // Load wordcloud when this page is rendered.
   useEffect(() => {
-    console.log("Dashboard rendered!");
     onRefresh();
   }, []);
 

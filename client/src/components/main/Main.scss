@@ -1,9 +1,18 @@
+@import "../../mixin.scss";
+
 .Main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-default-column;
+
+  .FooterArea {
+    width: 100%;
+  }
 }
 
-.FooterArea {
-  width: 100%;
+@include desktop {
+}
+
+@include tablet {
+}
+
+@include mobile {
 }

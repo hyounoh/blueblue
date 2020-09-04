@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import "./Wordcloud.scss";
 import ReactWordcloud from "react-wordcloud";
 import { select } from "d3-selection";
-import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";
 import config from "../../settings/config.json";
 import KeywordContext from "../../context/Keyword.context";
@@ -52,7 +51,6 @@ const Wordcloud = () => {
 
   // Load wordcloud when this page is rendered.
   useEffect(() => {
-    console.log("Wordcloud rendered!");
     onRefresh();
   }, []);
 
@@ -60,10 +58,6 @@ const Wordcloud = () => {
     <div className="Container">
       <div className="ContainerHeader">
         <div className="ContainerTitle">워드 클라우드 (최근 30일)</div>
-        <div className="SizedBox"></div>
-        <div className="Refresh" onClick={onRefresh}>
-          <img src={RefreshIcon} alt="Refresh"></img>
-        </div>
       </div>
 
       <div className="ContainerContent">

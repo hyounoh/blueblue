@@ -1,7 +1,25 @@
+@import "../../mixin.scss";
+
 .Title {
-    font-size: xx-large;
-    font-family: 'NanumSquareRoundEB';
+  font-size: xx-large;
+  font-family: "NanumSquareRoundEB";
+  height: fit-content;
+  width: fit-content;
+  margin-top: 16px;
+}
+
+@include desktop {
+}
+
+@include tablet {
+}
+
+@include mobile {
+  .Title {
+    font-size: x-large;
+    font-family: "NanumSquareRoundEB";
     height: fit-content;
     width: fit-content;
-    margin-top: 20px;
+    margin-top: 16px;
+  }
 }

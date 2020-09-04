@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./TimeGraph.scss";
 import "../../../node_modules/react-vis/dist/style.css";
-import RefreshIcon from "../../icons/round_refresh_black_18dp.png";
 import axios from "axios";
 import config from "../../settings/config.json";
 import { ResponsiveBar } from "@nivo/bar";
@@ -25,7 +24,6 @@ const TimeGraph = () => {
 
   // Load wordcloud when this page is rendered.
   useEffect(() => {
-    console.log("TimeGraph rendered!");
     onRefresh();
   }, []);
 
@@ -34,9 +32,6 @@ const TimeGraph = () => {
       <div className="ContainerHeader">
         <div className="ContainerTitle">시계열 그래프 (최근 30일)</div>
         <div className="SizedBox"></div>
-        <div className="Refresh" onClick={onRefresh}>
-          <img src={RefreshIcon} alt="Refresh"></img>
-        </div>
       </div>
       <div className="ContainerContent">
         <ResponsiveBar

@@ -7,23 +7,19 @@
     @include container-header;
 
     .ContainerTitle {
-      @include container-title;
-    }
-
-    .SizedBox {
-      @include sized-box;
-    }
-
-    .Refresh {
-      @include refresh;
-    }
-
-    .Refresh:hover {
-      @include refresh-hover;
     }
   }
 
   .ContainerContent {
     @include container-content;
   }
+}
+
+@include desktop {
+}
+
+@include tablet {
+}
+
+@include mobile {
 }
