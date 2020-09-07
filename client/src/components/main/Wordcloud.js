@@ -55,12 +55,12 @@ const Wordcloud = () => {
   }, []);
 
   return (
-    <div className="Container">
-      <div className="ContainerHeader">
-        <div className="ContainerTitle">워드 클라우드 (최근 30일)</div>
+    <div className="wrap-wordcloud">
+      <div className="wordcloud-header">
+        <div className="header-title">워드 클라우드 (최근 30일)</div>
       </div>
 
-      <div className="ContainerContent">
+      <div className="wordcloud-content">
         <ReactWordcloud
           words={words}
           options={{

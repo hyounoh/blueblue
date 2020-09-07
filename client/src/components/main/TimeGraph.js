@@ -28,12 +28,11 @@ const TimeGraph = () => {
   }, []);
 
   return (
-    <div className="Container">
-      <div className="ContainerHeader">
-        <div className="ContainerTitle">시계열 그래프 (최근 30일)</div>
-        <div className="SizedBox"></div>
+    <div className="wrap-timegraph">
+      <div className="timegraph-header">
+        <div className="header-title">시계열 그래프 (최근 30일)</div>
       </div>
-      <div className="ContainerContent">
+      <div className="timegraph-content">
         <ResponsiveBar
           data={graph}
           keys={["count"]}

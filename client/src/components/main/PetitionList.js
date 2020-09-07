@@ -90,13 +90,13 @@ const PetitionList = () => {
   }, [word]);
 
   return (
-    <div className="Container">
+    <div className="wrap">
       {isSelectWord ? (
-        <div className="PetitionContainer">
-          <div className="ContainerHeader">
-            <div className="ContainerTitle">'{word}' 단어가 포함된 청원 목록 (최근 30일)</div>
+        <div className="wrap-petitionlist">
+          <div className="petitionlist-header">
+            <div className="header-title">'{word}' 단어가 포함된 청원 목록 (최근 30일)</div>
           </div>
-          <div className="ContainerContent">
+          <div className="petitionlist-content">
             <Paper className={classes.root}>
               <TableContainer className={classes.container}>
                 <Table stickyHeader aria-label="sticky table">
@@ -115,7 +115,7 @@ const PetitionList = () => {
                         <TableRow hover role="checkbox" tabIndex={-1} key={petition.title}>
                           <TableCell>{petition.title}</TableCell>
                           <TableCell>
-                            <a className="PetitionUrl" href={petition.url} target="_blank" rel="noopener noreferrer">
+                            <a href={petition.url} target="_blank" rel="noopener noreferrer">
                               {petition.url}
                             </a>
                           </TableCell>

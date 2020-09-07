@@ -1,0 +1,36 @@
+@import "../../mixin.scss";
+
+.wrap-timegraph {
+  @include flex-default-column;
+
+  font-size: x-large;
+  font-family: "NanumSquareRoundR";
+  height: 70vh;
+  width: 70vw;
+  margin-top: 32px;
+  box-shadow: 0px 0px 40px #eeeeee;
+
+  .timegraph-header {
+    width: 80%;
+    display: flex;
+    align-items: center;
+
+    .header-title {
+    }
+  }
+
+  .timegraph-content {
+    margin-top: 16px;
+    width: 80%;
+    height: 80%;
+  }
+}
+
+@include desktop {
+}
+
+@include tablet {
+}
+
+@include mobile {
+}
