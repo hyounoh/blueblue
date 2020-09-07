@@ -21,7 +21,7 @@ const Dashboard = () => {
       });
 
     axios
-      .get("http://" + config.host + ":" + config.port + "/graph?interval=3")
+      .get("http://" + config.host + ":" + config.port + "/graph?interval=7")
       .then((response) => {
         let count = response.data["results"]["sum"];
         setCount(count);
