@@ -1,50 +1,87 @@
 @import "../../mixin.scss";
 
-.Dashboard {
-  @include flex-default-row;
-
-  margin-top: 32px;
-  height: 0 auto;
-  width: 70vw;
-
-  .DashboardItem {
-    @include flex-default-column;
-
-    flex: 1;
-    height: 128px;
-    box-shadow: 0px 0px 32px #dddddd;
-
-    .DashboardItemTitle {
-      font-size: x-large;
-      font-family: "NanumSquareRoundB";
-    }
-
-    .DashboardItemContent {
-      margin-top: 16px;
-      font-size: large;
-      font-family: "NanumSquareRoundR";
-    }
-  }
-
-  .Word {
-    margin-right: 16px;
-  }
-
-  .Count {
-    margin-left: 16px;
-  }
-}
-
 @include desktop {
+  .Dashboard {
+    @include flex-default-row;
+
+    margin-top: 32px;
+    height: fit-content;
+    width: 90vw;
+
+    .DashboardItem {
+      @include flex-default-column;
+
+      flex: 1;
+      height: fit-content;
+      padding: 32px;
+      box-shadow: 0px 0px 32px #dddddd;
+
+      .DashboardItemTitle {
+        font-size: x-large;
+        font-family: "NanumSquareRoundB";
+      }
+
+      .DashboardItemContent {
+        margin-top: 16px;
+        font-size: large;
+        font-family: "NanumSquareRoundR";
+      }
+    }
+
+    .Word {
+      margin-right: 16px;
+    }
+
+    .Count {
+      margin-left: 16px;
+    }
+  }
 }
 
 @include tablet {
+  .Dashboard {
+    @include flex-default-row;
+
+    margin-top: 32px;
+    height: fit-content;
+    width: 90vw;
+
+    .DashboardItem {
+      @include flex-default-column;
+
+      flex: 1;
+      height: fit-content;
+      padding: 32px;
+      box-shadow: 0px 0px 32px #dddddd;
+
+      .DashboardItemTitle {
+        font-size: x-large;
+        font-family: "NanumSquareRoundB";
+      }
+
+      .DashboardItemContent {
+        margin-top: 16px;
+        font-size: large;
+        font-family: "NanumSquareRoundR";
+      }
+    }
+
+    .Word {
+      margin-right: 16px;
+    }
+
+    .Count {
+      margin-left: 16px;
+    }
+  }
 }
 
 @include mobile {
   .Dashboard {
     @include flex-default-column;
 
+    margin-top: 16px;
+    height: fit-content;
     width: 90vw;
 
     .DashboardItem {
@@ -53,6 +90,7 @@
       width: 100%;
       padding-top: 16px;
       padding-bottom: 16px;
+      box-shadow: 0px 0px 32px #dddddd;
 
       .DashboardItemTitle {
         font-size: large;
@@ -67,12 +105,10 @@
     }
 
     .Word {
-      margin-right: 0px;
     }
 
     .Count {
       margin-top: 16px;
-      margin-left: 0px;
     }
   }
 }

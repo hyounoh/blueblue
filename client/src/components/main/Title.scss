@@ -1,7 +1,6 @@
 @import "../../mixin.scss";
 
 .Title {
-  font-size: xx-large;
   font-family: "NanumSquareRoundEB";
   height: fit-content;
   width: fit-content;
@@ -9,17 +8,19 @@
 }
 
 @include desktop {
+  .Title {
+    font-size: xx-large;
+  }
 }
 
 @include tablet {
+  .Title {
+    font-size: xx-large;
+  }
 }
 
 @include mobile {
   .Title {
     font-size: x-large;
-    font-family: "NanumSquareRoundEB";
-    height: fit-content;
-    width: fit-content;
-    margin-top: 16px;
   }
 }

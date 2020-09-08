@@ -9,13 +9,10 @@ const Title = () => {
 
   // Set event on refresh to load wordcloud data
   const onRefresh = () => {
-    axios
-      .get("http://" + config.host + ":" + config.port + "/status")
-      .then((response) => {})
-      .catch((response) => {
-        console.log(response);
-        alert.show("Please check internet connection");
-      });
+    axios.get("http://" + config.host + ":" + config.port + "/status").catch((response) => {
+      console.log(response);
+      alert.show("Please check internet connection");
+    });
   };
 
   // Load wordcloud when this page is rendered.

@@ -6,23 +6,25 @@
   font-size: x-large;
   font-family: "NanumSquareRoundR";
   height: 70vh;
-  width: 70vw;
+  width: 90vw;
   margin-top: 32px;
   box-shadow: 0px 0px 40px #eeeeee;
 
   .timegraph-header {
-    width: 80%;
-    display: flex;
-    align-items: center;
+    width: 90%;
+    height: 20%;
 
-    .header-title {
-    }
+    @include flex-default-row;
+    justify-content: flex-start;
   }
 
   .timegraph-content {
     margin-top: 16px;
-    width: 80%;
+    margin-bottom: 16px;
+    width: 90%;
     height: 80%;
+
+    @include flex-default-column;
   }
 }
 
@@ -33,4 +35,31 @@
 }
 
 @include mobile {
+  .wrap-timegraph {
+    @include flex-default-column;
+
+    font-size: large;
+    font-family: "NanumSquareRoundR";
+    height: 70vh;
+    width: 90vw;
+    margin-top: 32px;
+    box-shadow: 0px 0px 40px #eeeeee;
+
+    .timegraph-header {
+      width: 90%;
+      height: 20%;
+
+      @include flex-default-row;
+      justify-content: flex-start;
+    }
+
+    .timegraph-content {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      width: 90%;
+      height: 80%;
+
+      @include flex-default-column;
+    }
+  }
 }

@@ -43,12 +43,12 @@ const PetitionList = () => {
       alignSelf: "center",
     },
     container: {
-      minHeight: "90%",
-      maxHeight: "90%",
+      minHeight: "80%",
+      maxHeight: "80%",
       width: "100%",
     },
     pagination: {
-      maxHeight: "10%",
+      maxHeight: "20%",
       width: "100%",
     },
   });
