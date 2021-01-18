@@ -2,8 +2,6 @@
 
 청와대 청원 게시판 분석 서비스 **(청청)**
 
-http://www.studiomug8.com/blueblue/
-
 ## Description
 
 - Crawler
