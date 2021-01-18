@@ -13,7 +13,7 @@ Flask-RESTful==0.3.6
 flask-restful-swagger-2==0.35
 idna==2.7
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.10.1
 limits==1.5.1
 MarkupSafe==1.1.1
 pycparser==2.18
